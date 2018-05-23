@@ -13,7 +13,7 @@ Here's the link to Heroku App Web Page of [loc8r-yuangao](https://loc8r-yuangao.
 
     Answer:
     - The two new keywords that the author discusses are ``` const ``` and ``` let ```. Variables defined with ``` const ``` cannot be changed at a later point in the code, and variables defined with ``` let ``` can be changed.
-    - What the author recommends is that we should always define variables with ``` const ``` unless the value is going to change and all instances of var in app.js can be changed to ``` const ```.
+    - What the author recommends is that we should always define variables with ``` const ``` unless the value is going to change and all instances of ``` var ``` in app.js can be changed to ``` const ```.
 
 2. What do we call the process of mapping URL requests to the functionality we want to associate with the URL? For example, when the URL / is requested (this represents the base URL for our application's domain), we want to execute the controller function that renders our title page. What do we call the code that connects a URL request to our controller code?
 
