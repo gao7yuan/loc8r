@@ -13,6 +13,7 @@ Here's the link to the [Heroku App](https://loc8r-yuangao.herokuapp.com)
   - npm is a package manager that gets installed with Node, which gives you the ability to download Node modules or packages to extend the functionality of your application
   - ```package.json```: contains metadata about a project, including dependencies
   - ```$ npm install``` tells npm to install all of the dependencies listed in the ```package.json``` file into a folder in the application called *node_modules*
+  
   ![ch3](/images/ch3-npm_and_packagejson.png)
   - ```$ npm install --save package-name``` tells npm to download and install the new package into the node_modules folder and add this package to the list of dependencies in the ```package.json``` file
 * Creating and configuring Express projects
