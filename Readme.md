@@ -20,7 +20,7 @@ Here's the link to the [Heroku App](https://loc8r-yuangao.herokuapp.com)
   - ```package.json```: contains metadata about a project, including dependencies
   - ```$ npm install``` tells npm to install all of the dependencies listed in the ```package.json``` file into a folder in the application called *node_modules*
 
-  ![ch3](/images/ch3-npm_and_packagejson.png =100x)
+  ![ch3](/images/ch3-npm_and_packagejson.png)
   - ```$ npm install --save package-name``` tells npm to download and install the new package into the node_modules folder and add this package to the list of dependencies in the ```package.json``` file
 * Creating and configuring Express projects
   - ```$ express``` installs the Express framework with default settings into a folder
