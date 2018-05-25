@@ -2,6 +2,8 @@
 Yuan Gao's Getting MEAN Book Project for CS 5610 Web Development
 
 ## Chapter 3
+Creating and setting up a MEAN project
+
 ### Heroku App Web page
 Here's the link to the [Heroku App](https://loc8r-yuangao.herokuapp.com)
 
