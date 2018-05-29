@@ -13,6 +13,13 @@ h1, h2, h3, h4, h5, h6 {
   font-family: 'Lobster', cursive;
 }
 
+.banner {
+  margin-top: 1em;
+  border-bottom: 1px solid #469ea8;
+  margin-bottom: 1.5em;
+  padding-bottom: 0.5em;
+}
+
 .card {
   background-color: #469ea8;
   padding: 1rem;
