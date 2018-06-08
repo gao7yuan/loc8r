@@ -60,7 +60,7 @@ Here's the link to the [Heroku App](https://loc8r-yuangao.herokuapp.com)
       - Multiline strings without hacks
       - String formatting
       - String tagging for safe HTML escaping, localization and more
-    Reference: [Getting Literal With ES6 Templkate Strings](https://developers.google.com/web/updates/2015/01/ES6-Template-Strings)
+    - Reference: [Getting Literal With ES6 Templkate Strings](https://developers.google.com/web/updates/2015/01/ES6-Template-Strings)
 
 ## Chapter 3
 Creating and setting up a MEAN project
