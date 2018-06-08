@@ -2,13 +2,65 @@
 Yuan Gao's Getting MEAN Book Project for CS 5610 Web Development
 
 ## Chapter 4
-Binding a static site with Node and Express
+Binding a static site with Node and Express to prototype an application
 
 ### Heroku App Web page
 Here's the link to the [Heroku App](https://loc8r-yuangao.herokuapp.com)
 
 ### Screenshot
+![ch4](/images/ch4-screenshot-home.png)
+![ch4](/images/ch4-screenshot-about.png)
+![ch4](/images/ch4-screenshot-info.png)
+![ch4](/images/ch4-screenshot-review.png)
 
+### Summary
+* Defined routes in Express for application URLs
+* Created views in Express using Pug and Bootstrap
+* Used controllers in Express to tie routes to views
+* Moved data from views to controllers
+
+### Notes
+* Defining the routes in Express
+  - Mapping of screens against URLs
+  - Split the controller files by collections
+* Bootstrap responsive grid system
+  ![ch4](/images/ch4-bootstrap-responsive-grid-system.png)
+* Take the data out of views and put them into controller
+  - Data flow in an MVC system:
+    ![ch4](/images/ch4-dataflow-MVC.png)
+  - The second parameter in the render function is a JS object containing the data to send to the view
+  - ```=``` signifies that following content is buffered code (in this case a JS object)
+  - ```#{}``` delimiters are used to insert data into a specific place
+  - Referencing data in Pug templates:
+    - Interpolation: ```#{}```
+    - Buffered code: ```=``` or ```h1=`Welcome to ${pageHeader.title}````
+    - Should always pay attention if the data contains HTML
+  - Looping through arrays in a Pug view
+    - ```each <name of key to access data> in <name of array to loop through>```
+  - Create reusable layout components using ```include``` and ```mixin```
+* One thing that I noticed was Tony's ```style.css``` is missing the styles for ```.banner``` compared with what is in the source code. It was fine for Chrome, but it messes the layout up in Safari. Therefore, I included the style for ```.banner``` in my work.
+
+### Answers to Readme Note Questions
+1. In class, we've talked about code re-use, and avoiding unnecessary repetition of code. How do the Pug templates you've worked with in Chapter 4 help to accomplish this?
+
+    Answer:
+    - We created reusable layout components using ```include``` and ```mixin```. In details, we created a folder called ```_includes``` and added a ```.pug``` file that contains shared HTML functions starting with ```mixin```. In the ```.pug``` files that we want to reuse these shared functions, we simply ```include``` the ```.pug``` file that contains them in the header.
+
+2. According to the routing we have set up, what function is called when the ```/location``` url request is received? What file is this function defined in?
+
+    Answer:
+    - Function ```locationInfo(req, res)``` is called when the ```/location``` url request is received. This function is defined in ```../controllers/locations.js```.
+
+3. In Appendix C, you needed to use back-ticks instead of single quotes. What is the significance of back-ticks in EcmaScript 6?
+
+    Answer:
+    - Back-ticks in ES6 brings better:
+      - String interpolation
+      - Embedded expressions
+      - Multiline strings without hacks
+      - String formatting
+      - String tagging for safe HTML escaping, localization and more
+    Reference: [Getting Literal With ES6 Templkate Strings](https://developers.google.com/web/updates/2015/01/ES6-Template-Strings)
 
 ## Chapter 3
 Creating and setting up a MEAN project
