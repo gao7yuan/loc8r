@@ -1,6 +1,15 @@
 # Yuan Gao Getting MEAN 2nd Ed Book Project (loc8r)
 Yuan Gao's Getting MEAN Book Project for CS 5610 Web Development
 
+## Chapter 4
+Binding a static site with Node and Express
+
+### Heroku App Web page
+Here's the link to the [Heroku App](https://loc8r-yuangao.herokuapp.com)
+
+### Screenshot
+
+
 ## Chapter 3
 Creating and setting up a MEAN project
 
