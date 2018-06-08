@@ -27,6 +27,7 @@ Here's the link to the [Heroku App](https://loc8r-yuangao.herokuapp.com)
   ![ch4](/images/ch4-bootstrap-responsive-grid-system.png)
 * Take the data out of views and put them into controller
   - Data flow in an MVC system:
+
     ![ch4](/images/ch4-dataflow-MVC.png)
   - The second parameter in the render function is a JS object containing the data to send to the view
   - ```=``` signifies that following content is buffered code (in this case a JS object)
