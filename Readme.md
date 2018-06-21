@@ -1,6 +1,60 @@
 # Yuan Gao Getting MEAN 2nd Ed Book Project (loc8r)
 Yuan Gao's Getting MEAN Book Project for CS 5610 Web Development
 
+## Chapter 5
+Building a data model with Mongoose and MongoDB
+
+### Heroku App Web page
+Here's the link to the [Heroku App](https://loc8r-yuangao.herokuapp.com)
+
+### Screenshot
+
+### Summary
+* Connected Express to MongoDB using Mongoose
+* Defined Mongoose schemas
+* Used MongoDB shell to create a MongoDB database and added data
+* Used mLab to get database live
+
+### Notes
+* Connecting Express to MongoDB using Mongoose
+  - MongoDB only talks to Mongoose, Mongoose talks to Node and Express, Angular talks to Express
+  - MongoDB is installed globally, Mongoose should be added directly to our application. Mongoose available as an npm module.
+  - Install Mongoose and add to list of dependencies in package.json
+    - ```$ npm install --save mongoose```
+      - ```--save``` tells npm to add Mongoose to dependencies
+  - Add Mongoose connection to application
+    - create file in ```model``` and require it in ```app.js```
+* Defining Mongoose schemas
+  - ```locations.js``` in ```model```
+  - Compile schemas to model
+      ![ch5](/images/ch5-schematomodel.png)    
+* Using MongoDB shell to create a database and add data
+  - Drop into shell using ```$ mongo``` (This can be done under any directory.)
+  - To see the content of a collection:
+    - ```db.collectionName.find(queryObject)``` or ```db.collectionName.find(queryObject).pretty()```
+* Getting database live
+  - Get database URI ```$ heroku config:get MONGODB_URI```
+  - Pushing up data
+    - Navigate to a directory on your machine that is suitable to hold a data dump (e.g. Home directory)
+    - Dump data from development Loc8r database to /dump
+      - ```$ mongodump -h localhost:27017 -d Loc8r```
+    - Restore the data to the live database
+      - ```$ mongorestore -h <server address>:<port> -d <database name> -u <username> -p
+<password> dump/Loc8r``` (The original book only has ```/dump``` instead of ```/dump/Loc8r```.)
+    - Test    
+  - Making the application use the right database
+    - environment variable: ```NODE_ENV```
+### Answers to Readme Note Questions
+1. This chapter uses some EcmaScript 6 syntax which is a bit strange if you're accustomed to other programming languages (although it is covered in the Codecademy tutorial), specifically the ```=>``` (arrow) operator, which makes several appearances in ```db.js```. What does this operator do, in general? You may, of course, look it up online to answer this question.
+
+    Answer:
+    - 
+
+2. What are individual database entries (items in a collection) called in MongoDB?
+
+3. What's the difference between the command line commands ```mongo``` and ```mongod```? Which of these two needs to be running all the time in order for your application to work?
+
+
 ## Chapter 4
 Binding a static site with Node and Express to prototype an application
 
