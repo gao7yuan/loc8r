@@ -41,9 +41,8 @@ Here's the link to the [Heroku App](https://loc8r-yuangao.herokuapp.com)
     - Dump data from development Loc8r database to /dump
       - ```$ mongodump -h localhost:27017 -d Loc8r```
     - Restore the data to the live database
-      - ```$ mongorestore -h <server address>:<port> -d <database name> -u <username> -p
-<password> dump/Loc8r```
-      - (The original book only has ```/dump``` instead of ```/dump/Loc8r```.)
+      - ```$ mongorestore -h [server address]:[port] -d [database name] -u [username] -p [password] dump/Loc8r```
+      - The original book only has ```dump/``` instead of ```dump/Loc8r```.
     - Test    
   - Making the application use the right database
     - environment variable: ```NODE_ENV```
