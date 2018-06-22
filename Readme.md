@@ -8,6 +8,8 @@ Building a data model with Mongoose and MongoDB
 Here's the link to the [Heroku App](https://loc8r-yuangao.herokuapp.com)
 
 ### Screenshot
+![ch5](/images/ch5-screenshot1.png)
+![ch5](/images/ch5-screenshot2.png)
 
 ### Summary
 * Connected Express to MongoDB using Mongoose
@@ -48,12 +50,18 @@ Here's the link to the [Heroku App](https://loc8r-yuangao.herokuapp.com)
 1. This chapter uses some EcmaScript 6 syntax which is a bit strange if you're accustomed to other programming languages (although it is covered in the Codecademy tutorial), specifically the ```=>``` (arrow) operator, which makes several appearances in ```db.js```. What does this operator do, in general? You may, of course, look it up online to answer this question.
 
     Answer:
-    - 
+    - An arrow function expression has a shorter syntax than a ```function expression``` and does not have its own ```this```, ```arguments```, ```super```, or ```new.target```. These function expressions are best suited for non-method functions, and they cannot be used as constructors.
+    - Reference: [Arrow functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions)
 
 2. What are individual database entries (items in a collection) called in MongoDB?
 
+    Answer:
+    - They are called ```documents```.
+
 3. What's the difference between the command line commands ```mongo``` and ```mongod```? Which of these two needs to be running all the time in order for your application to work?
 
+    Answer:
+    - ```mongo``` is a MongoDB command-line shell and connects to a instance of ```mongod```. ```mongod``` starts the MongoDB server and will be running as a background. ```mongod``` has to be running all the time for the application to work.
 
 ## Chapter 4
 Binding a static site with Node and Express to prototype an application
@@ -115,7 +123,7 @@ Here's the link to the [Heroku App](https://loc8r-yuangao.herokuapp.com)
       - Multiline strings without hacks
       - String formatting
       - String tagging for safe HTML escaping, localization and more
-    - Reference: [Getting Literal With ES6 Templkate Strings](https://developers.google.com/web/updates/2015/01/ES6-Template-Strings)
+    - Reference: [Getting Literal With ES6 Template Strings](https://developers.google.com/web/updates/2015/01/ES6-Template-Strings)
 
 ## Chapter 3
 Creating and setting up a MEAN project
