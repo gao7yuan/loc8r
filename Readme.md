@@ -1,6 +1,97 @@
 # Yuan Gao Getting MEAN 2nd Ed Book Project (loc8r)
 Yuan Gao's Getting MEAN Book Project for CS 5610 Web Development
 
+## Chapter 6
+Writing a REST API
+
+### Heroku App Web page
+Here's the link to the [Heroku App](https://loc8r-yuangao.herokuapp.com)
+
+### Screenshot
+![ch6](/images/ch6-screenshot1.png)
+![ch6](/images/ch6-screenshot2.png)
+![ch6](/images/ch6-screenshot3.png)
+
+### Summary
+* Rules of REST API
+* APT patterns
+* CRUD functions
+* Using Express and Mongoose to interact with MongoDB
+* Testing API endpoints
+
+### Notes
+* REST: REpresentational State Transfer
+  - A REST API takes an incoming HTTP request, does some processing, and always send back an HTTP response.
+* The rules of a REST API
+  - Request URLs: might have the same URL or parameter
+  - Request methods: POST, GET, PUT, DELETE
+  - Responses and status codes
+    - Two key components to a response
+      - The returned data: format: XML / JSON (we use JSON here)
+      - HTTP status code
+* Setting up API in Express
+  - Create ```app_api``` folder at the top level
+  - Create ```index.js``` in ```app_api/routes```
+  - Include the routes in the application. In ```app.js```:
+    - ```const apiRoutes = require('.app_api/routes/index');```
+    - ```app.use('/api', apiRoutes);``` to tell the application to check the API routes for incoming requests
+  - Specifying the request methods in the routes
+  - Specifying required URL parameters
+    - ```/api/locations/:locationid/reviews/:reviewid```
+  - Defining loc8r API routes
+  - Create controller placeholders
+  - Include the model
+    - Need to require Mongoose into the controller files and make API talk to the database
+    - ```const mongoose = require('mongoose');``` // gives the controller access to the database connection
+    - ```const Loc = mongoose.model('Location');``` // brings in the Location model so that we can interact with the Locations collection
+    - Move models to app_api
+* GET methods: reading data from MongoDB
+  - Finding a single document in MongoDB using Mongoose
+    ![ch6](/images/ch6-mongoosequery.png)
+    - Mongoose interact with database via its models - import the Location model as Loc at top of controller files
+    - ```exec``` method to start the database query
+    - ```exec``` method executes the query and passes a callback function that will run when the operation is complete.
+    - Ensures that the database interaction is asynchronous
+  - Finding a single subdocument based on IDs
+    - Limiting the paths returned from MongoDB
+      ```
+         Loc
+           .findById(req.params.locationid)
+           .select('name review')
+           .exec();
+      ```
+      - ```select``` method accespts a space-separated string of the paths.
+  - Finding multiple documents with geospatial queries
+    - ```geoNear``` is not supported. Use ```aggregate``` instead   
+* POST methods: adding data to MongoDB
+  - URL parameters accessed using ```req.params```
+  - Query strings accessed via ```via.query```
+  - Express controllers access posted form data via ```req.body```
+* PUT methods: updating data in MongoDB
+  - ```.select('reviews -rating')``` ```-``` means we don't want to include reviews and rating
+* DELETE method: deleting data from MongoDB
+  - Document: ```findByIdAndRemove```
+  - Subdocument:
+    - ```location.reviews.id(reviewid)```
+    - ```location.reviews.id(reviewid).remove()```   
+
+### Answers to Readme Note Questions     
+1. According to your API routing, what is the name of the function that will be called when the server receives a POST request at the ```/api/locations``` URL?
+
+    Answer:
+    - ```locationsCreate``` will be called.
+
+2. What is the format of the data that the server returns when you make a request to the api URLs?
+
+    Answer:
+    - ```JSON```.
+
+
+3. What is Postman for and why is it useful? How is its functionality similar to and different from a web browser like Chrome?
+
+    Answer:
+    - Postman is a complimentary to browser to test CRUD functions of our application. Since we can only test ```GET``` with our browser, we need Postman to help us test other methods such as ```POST```, ```PUT``` and ```DELETE```.
+
 ## Chapter 5
 Building a data model with Mongoose and MongoDB
 
