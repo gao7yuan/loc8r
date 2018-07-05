@@ -1,4 +1,5 @@
 const request = require('request');
+
 const apiOptions = {
   server: 'http://localhost:3000'
 };
@@ -68,47 +69,59 @@ const homelist = function(req, res) {
 };
 
 /*GET 'Location infor' page */
-const locationInfo = function(req, res) {
+const _renderDetailPage = function(req, res, locDetail) {
   res.render('location-info', {
-    title: 'HodgePodge Cafe',
+    title: locDetail.name,
     pageHeader: {
-      title: 'HodgePodge Cafe'
+      title: locDetail.name
     },
     sidebar: {
       context: 'is on Loc8r because it has accessible wifi and space to sit down with your laptop and get some work done.',
       callToAction: 'If you\'ve been and you like it - or if you don\'t - please leave a review to help other people just like you.'
     },
-    location: {
-      name: 'HodgePodge Cafe',
-      address: '6016 Bothell Way NE Suite J, Kenmore, WA 98028',
-      rating: 5,
-      facilities: ['Hot drinks', 'Food', 'Premium wifi'],
-      coords: {
-        lat: 47.7581963,
-        lng: -122.2652175
-      },
-      openingTimes: [{
-        days: 'Tuesday - Sunday',
-        opening: '11:00am',
-        closing: '8:00pm',
-        closed: false
-      }, {
-        days: 'Monday',
-        closed: true
-      }],
-      reviews: [{
-        author: ' Tovelo God ',
-        rating: 5,
-        timestamp: '16 May 2018',
-        reviewText: 'Coffee is good. Wifi is good. Love the food too. I can\'t say enough good things about it.'
-      }, {
-        author: ' Shroud Grzeseik ',
-        rating: 3,
-        timestamp: '13 May 2018',
-        reviewText: 'It was okay. Coffee wasn\'t great, but the wifi was fast.'
-      }]
-    }
+    location: locDetail
   });
+};
+
+const _showError = function(req, res, status) {
+  let title = '';
+  let content = '';
+  if (status === 404) {
+    title = '404, page not found';
+    content = "Oh dear. Looks like we cannot find this page. Sorry.";
+  } else {
+    title = `${status}, something's gone wrong`;
+    content = 'Something, somewhere, has gone just a little bit wrong.';
+  }
+  res.status(status);
+  res.render('generic-text', {
+    title: title,
+    content: content
+  });
+};
+
+const locationInfo = function(req, res) {
+  const path = `/api/locations/${req.params.locationid}`;
+  requestOptions = {
+    url: apiOptions.server + path,
+    method: 'GET',
+    json: {}
+  };
+  request(
+    requestOptions,
+    (err, response, body) => {
+      let data = body;
+      if (response.statusCode === 200) {
+        data.coords = {
+          lng: body.coords[0],
+          lat: body.coords[1]
+        };
+        _renderDetailPage(req, res, data);
+      } else {
+        _showError(req, res, response.statusCode);
+      }
+    }
+  );
 };
 
 /* GET 'Add review page' */
