@@ -50,7 +50,7 @@ const locationsListByDistance = function (req, res) {
     maxDistance: maxDistance,
     num: 10
   }};
-  if (!lng || !lat || !maxDistance) {
+  if ((!lng && lng !== 0) || (!lat && lat !== 0) || (!maxDistance && maxDistance !== 0)) {
     console.log('locationsListByDistance missing params');
     res
       .status(404)
