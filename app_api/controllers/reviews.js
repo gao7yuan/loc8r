@@ -40,6 +40,7 @@ const _doAddReview = function(req, res, location) {
     });
     location.save((err, location) => {
       if (err) {
+        console.log(err);
         res
           .status(400)
           .json(err);
