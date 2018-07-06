@@ -101,8 +101,15 @@ const _showError = function(req, res, status) {
 };
 
 const locationInfo = function(req, res) {
+  _getLocationInfo(req, res, (req, res, responseData) => {
+    _renderDetailPage(req, res, responseData);
+  });
+};
+
+/* GET 'Add review page' */
+const _getLocationInfo = function(req, res, callback) {
   const path = `/api/locations/${req.params.locationid}`;
-  requestOptions = {
+  const requestOptions = {
     url: apiOptions.server + path,
     method: 'GET',
     json: {}
@@ -116,7 +123,7 @@ const locationInfo = function(req, res) {
           lng: body.coords[0],
           lat: body.coords[1]
         };
-        _renderDetailPage(req, res, data);
+        callback(req, res, data);
       } else {
         _showError(req, res, response.statusCode);
       }
@@ -124,16 +131,46 @@ const locationInfo = function(req, res) {
   );
 };
 
-/* GET 'Add review page' */
-const addReview = function(req, res) {
+const _renderReviewForm = function(req, res, locDetail) {
   res.render('location-review-form', {
-    title: 'Review Starcups on Loc8r',
-    pageHeader: { title: 'Review Starcups' }
+    title: `Review ${locDetail.name} on Loc8r`,
+    pageHeader: { title: `Review ${locDetail.name}` }
+  });
+};
+
+const doAddReview = function(req, res) {
+  const locationid = req.params.locationid;
+  const path = `/api/locations/${locationid}/reviews`;
+  const postdata = {
+    author: req.body.name,
+    rating: parseInt(req.body.rating, 10),
+    reviewText: req.body.review
+  };
+  const requestOptions = {
+    url: apiOptions.server + path,
+    method: 'POST',
+    json: postdata
+  };
+  request(
+    requestOptions,
+    (err, response, body) => {
+      if (response.statusCode === 201) {
+        res.redirect(`/location/${locationid}`);
+      } else {
+        _showError(req, res, response.statusCode);
+      }
+    }
+  );
+};
+const addReview = function(req, res) {
+  _getLocationInfo(req, res, (req, res, responseData) => {
+    _renderReviewForm(req, res, responseData);
   });
 };
 
 module.exports = {
   homelist,
   locationInfo,
-  addReview
+  addReview,
+  doAddReview
 };
