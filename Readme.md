@@ -1,6 +1,109 @@
 # Yuan Gao Getting MEAN 2nd Ed Book Project (loc8r)
 Yuan Gao's Getting MEAN Book Project for CS 5610 Web Development
 
+## Chapter 7
+Using API inside Express
+
+### Heroku App Web page
+Here's the link to the [Heroku App](https://loc8r-yuangao.herokuapp.com)
+
+### Screenshot
+![ch7](/images/ch7-screenshot1.png)
+![ch7](/images/ch7-screenshot2.png)
+![ch7](/images/ch7-screenshot3.png)
+![ch7](/images/ch7-screenshot4.png)
+![ch7](/images/ch7-screenshot5.png)
+
+### Summary
+* Calling API from Express application
+* Handling and using data returned by API
+* Working with API response codes
+* Submitting data from browser to API (POST)
+* Validation and error traps
+
+### Notes
+* Call an API from Express
+  - Add ```request``` module to project (use npm)
+    - ```$ npm install --save request```
+    - ```app_server/controllers/locations.js```
+      - has all the controller for main serve-side application
+      - make API calls
+      - ```const request = require('request');```
+  - Set up default options of app URL (NODE_ENV: developer mode vs. production mode)
+  - Use request module
+    - Basic construct for making a request: a single command taking parameters for options (URL, request method, request body, query string parameters) and a callback
+    - Callback function has 3 parameters
+      - Error object
+      - Full response
+      - Parsed body of the response
+    - Most important 3 pieces of data in our code:
+      - Status code of the response
+      - Body of response
+      - Error thrown
+    - Skeleton for making API calls
+      ```
+        const requestOptions = {
+        url: 'http://yourapli.com/api/path',
+        method: 'GET',
+        json: {},
+        qs: {
+          offset: 20
+        }  
+      };
+      request(requestOptions, (err, response, body) => {
+        if (err) {
+          console.log(err);
+        } else if (response.statusCode === 200) {
+          console.log(body);
+        } else {
+          console.log(response.statusCode);
+        }
+      });
+      ```
+* Using lists of data from API on loc8r homepage
+  - Move rendering into a named function
+    - Why?
+      - decouple the rendering from the application logic; reusable
+      - rendering process occurs inside the callback of the API request
+    - --> Make a new function ```_renderHomepage``` in ```locations.js``` and move contents of ```homelist``` into it. Call it from ```homelist```.
+  - Buidling API request
+    - The options for a request are just a JavaScript object.
+  - Use API response data
+    - Add response body as the third argument to the callback function.
+    - Response body is an array of locations.
+  - Catch errors returned by API
+* Getting single documents from API on loc8r details page
+  - Set URLs and routes to access specific MongoDB documents
+    - specify ```locations/:locationid``` in ```index.js``` router
+    - How to get id?
+      - include id in ```locations-list.pug```
+  - Query API using a unique ID from a URL parameter
+  - Passing data from API to view
+    - formatting dates using a pug mixin in ```app_server/views/_includes```
+* Add data to database via API: add loc8r reviews
+  - Setting up the routing and views
+    - get the id
+  - POSTing the review data to API
+* Protecting data integrity with data validation
+  - At schema level, use Mongoose, before data is saved
+  - At the application level, before the data is posted to the API
+  - At the client side, before the form is submitted
+### Answers to Readme Note Questions
+1. The title of the chapter is "Consuming a REST API". What does this mean? In what sense is what you're doing in this chapter "consuming" the API you set up in chapter 6?
+
+    Answer:
+    - The title means we are using the REST API to make the Express application interact with MongoDB database, i.e., sending request (GET, POST, etc.) and getting responses. We are "consuming" the API by sending requests that include methods and URLs via the API to interact with the database and send back the response to the client side.
+
+2. Assuming your application is working properly, what's a single line of code you can delete to test the "API Lookup Error" message?
+
+    Answer:
+    - We can simply delete one of the lines of ```lng``` value or ```lat``` value in query string in the ```requestOptions```.
+
+3. There's an interesting bug described (and fixed) in the chapter that would affect people located at certain specific latitudes or longitudes, yielding an API error when there shouldn't be one. How does JavaScript's approach to truthiness relate to this problem?
+
+    Answer:
+    - When checking whether the longitude or latitude value is missing, the original code uses ```!lng || !lat```. However, when ```lng``` or ```lat``` is exactly zero, it is a falsy value, which results in the boolean being true. So people at location coords: {lng: 0, lat: 0} would not be able to use the app... A way to solve this problem is to use ```(!lng && lng !== 0) || (!lat && lat !== 0)``` instead.
+
 ## Chapter 6
 Writing a REST API
 
