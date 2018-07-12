@@ -1,4 +1,4 @@
-<div class="card">
+<div class="card" *ngFor="let location of locations">
   <div class="card-block">
     <h4>
       <a href="/location/{{location._id}}">{{location.name}}</a>
@@ -10,7 +10,7 @@
         <i class="fa fa-star{{location.rating < 5 ? '-o' : ''}}"></i>
       </small>
       <span class="badge badge-pill badge-default float-right">
-        {{location.distance}}km
+        {{location.distance | distance}}
       </span>
     </h4>
     <p class="address">{{location.address}}</p>

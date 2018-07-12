@@ -18,14 +18,21 @@ export class HomeListComponent implements OnInit {
 
   constructor() { }
 
-  location: Location = {
+  locations: Location[] = [{
     _id: '5b2bee771c765775c8e3d0fd',
     name: 'Caffe Ladro',
-    distance: 10.0,
+    distance: 10000,
     address: '400 Fairview Ave N, Seattle, WA',
     rating: 4,
     facilities: ['hot drinks', 'food', 'power']
-  };
+  }, {
+    _id: '5b2b3bc7c9be76510946bb87',
+    name: 'Hodgepodge cafe',
+    distance: 2000000,
+    address: '6016 Bothell Way NE suite j, Kenmore, WA',
+    rating: 5,
+    facilities: ['hot drinks', 'food', 'wifi']
+  }];
 
   ngOnInit() {
   }
