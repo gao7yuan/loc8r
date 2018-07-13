@@ -1,6 +1,33 @@
 # Yuan Gao Getting MEAN 2nd Ed Book Project (loc8r)
 Yuan Gao's Getting MEAN Book Project for CS 5610 Web Development
 
+## Chapter 8
+Creating an Angular application with TypeScript
+
+### screenshot
+![ch8](/images/ch8-screenshot.png)
+
+### Notes
+* Running with Angular
+  - To create an Angular application
+    - ```$ ng new your-app-name```
+  - To run
+    - ```$ ng serve```
+    - localhost:4200
+  - In Angular, double curly brackets are used to denote a binding between the data and the view
+* Working with Angular components
+  - Create home-list component
+   - ```$ ng generate component home-list```
+* Getting data from API
+  - Creating data service
+    - ```$ ng generate service loc8r-data```
+  - Using data service - link between component and service
+* Putting Angular app into production
+
+* ```--dir```, ```--sg``` and ```--st``` are out of date. Should be replaced by ```--directory```, ```--skip-git``` and ```--skip-tests```.
+* In TypeScript, the syntax of an array of strings should be string[] instead of [string] as suggested in the book.
+* In the latest version of Angular,  there's no need to import 'rxjs/add/operator/toPromise'. Otherwise the compiler complains ```ERROR in ./src/app/loc8r-data.service.ts Module not found: Error: Can't resolve 'rxjs/add/operator/toPromise' in '/Users/YuanGao/Desktop/CS5610 Web Dev/loc8r/loc8r-public/src/app'```
+
 ## Chapter 7
 Using API inside Express
 
