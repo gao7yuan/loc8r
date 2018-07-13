@@ -4,7 +4,7 @@ Yuan Gao's Getting MEAN Book Project for CS 5610 Web Development
 ## Chapter 8
 Creating an Angular application with TypeScript
 
-### screenshot
+### Screenshot
 ![ch8](/images/ch8-screenshot.png)
 
 ### Notes
