@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Headers, Http } from '@angular/http';
-//import 'rxjs/Rx';
-import 'rxjs/add/operator/toPromise';
 import { Location } from './home-list/home-list.component';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class Loc8rDataService {
 
   constructor(private http: Http) { }
@@ -12,8 +12,8 @@ export class Loc8rDataService {
   private apiBaseUrl = 'http://localhost:3000/api/';
 
   public getLocations(): Promise<Location[]> {
-    const lng: number = -0.7992599;
-    const lat: number = 51.378091;
+    const lng: number = -122.407458;
+    const lat: number = 47.621821;
     const maxDistance: number = 200000;
     const url: string = `${this.apiBaseUrl}/locations?lng=${lng}&lat=${lat}&maxDistance=${maxDistance}`;
     return this.http
