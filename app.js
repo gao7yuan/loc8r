@@ -29,7 +29,7 @@ app.use('/api', function(req, res, next) {
 });
 
 app.use('/', indexRouter);
-app.use('/api', apiRoutes);
+app.use('/api', apiRoutes); // requests that begin with /api will be routed using apiRoutes. apiRoutes handles the remaining of the routing
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
