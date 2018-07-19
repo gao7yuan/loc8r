@@ -1,6 +1,63 @@
 # Yuan Gao Getting MEAN 2nd Ed Book Project (loc8r)
 Yuan Gao's Getting MEAN Book Project for CS 5610 Web Development
 
+## Chapter 9
+Building a single-page application with Angular
+
+### Screenshot
+![ch9](/images/ch9-screenshot1.png)
+![ch9](/images/ch9-screenshot2.png)
+![ch9](/images/ch9-screenshot3.png)
+
+### Notes
+* Adding navigation in an Angular SPA
+  - In Express app we used Express router, here we use Angular router.
+  - Big difference: full app is loaded in browser, so when navigating between pages the browser doesn't fully unload all of the html, css, js each time.
+  - Quicker! Only need to wait for data from API calls and new images.
+  - Import Angular router
+    - ```app.module.ts``` import
+    - routing configuration
+      - each route as a path (url) and a component
+      - configuration is passed to a forRoot method on the RouterModule
+  - Create a component for framework and navigation
+    - in ```loc8r-public``` generate a component called framework:
+      - ```$ ng generate component framework```
+      - add html for ```framework.component.html```
+      - set as default component by updating bootstrap value in ```app.module.ts```
+      - update ```index.html``` file to use the new framework component
+  - Define where to display the content using router-outlet  
+    - to specify the destination for routed components
+    - Angular will add routed component after ```<router-outlet></router-outlet>``` tag
+  - Navigating between pages
+    - create About component, define About route and change the links
+    - Angular navigation links
+      - When using links defined in the router, Angular doesn't want to see ```href``` attributes in the ```<a>``` tags, instead it looks for a directive called ```routerLink```. Angular takes the value you give the routerLink, and create the href properly.
+  - Improve navigation by adding "active" navigation styles
+    - "active" class on navigation items. Angular directive: ```routerLinkActive```. Bootstrap displays a stronger white color for "active" items.
+* Building a modular app using multiple nested components
+    ![ch9](/images/ch9-modular-app.png)
+  - Creating the main homepage component
+  - Create and use reusable sub-components
+    - import ```Input``` to ```page-header``` component as Angular core, use it as decorator, so it can use input content
+* Adding geolocation to find places near you
+  - add HTML5 geolocation
+  - Creating an Angular geolocation service
+    - ```$ng generate service geolocation```
+    - ```getPosition``` method in ```geolocation.service.ts```
+  - Adding the geolocation service to the application
+    - Import the service into the component
+    - Add the service to the providers in the decorator
+    - Add the service to the class constructor
+  - Using geolocation service from the ```home-list``` component
+* Safely bind HTML content
+  - Add About page content
+  - Create a pipe to transform the line breaks
+    - take the provided text, replace each instance of ```\n``` with a ```<br/>``` tag
+    - need to create a pipe and apply it to the binding
+    - ```$ ng generate pipe html-line-breaks```
+    - still shows ```<br/>``` in browser. reason: security.
+  - Safely bind HTML using a property binding
+
 ## Chapter 8
 Creating an Angular application with TypeScript
 
