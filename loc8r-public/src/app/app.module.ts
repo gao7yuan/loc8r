@@ -2,7 +2,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { RouterModule } from '@angular/router';
+// import { RouterModule } from '@angular/router';
+
+import { AppRoutingModule } from './app-routing/app-routing.module';
 
 import { HomeListComponent } from './home-list/home-list.component';
 import { DistancePipe } from './distance.pipe';
@@ -36,6 +38,8 @@ import { MostRecentFirstPipe } from './most-recent-first.pipe';
     BrowserModule,
     FormsModule,
     HttpModule,
+    AppRoutingModule
+    /*
     RouterModule.forRoot([
       {
         path: '',
@@ -50,6 +54,7 @@ import { MostRecentFirstPipe } from './most-recent-first.pipe';
         component: DetailsPageComponent
       }
     ])
+    */
   ],
   providers: [],
   bootstrap: [FrameworkComponent] // entry point of the app. make homelist the default component.

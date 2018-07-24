@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 
-import { Location } from '../home-list/home-list.component';
+import { Location, Review } from '../location';
 import { Loc8rDataService } from '../loc8r-data.service';
 
 @Component({
@@ -13,11 +13,13 @@ export class LocationDetailsComponent implements OnInit {
 
   @Input() location: Location;
 
-  public newReview = {
+  public newReview: Review = {
     author: '',
     rating: 5,
     reviewText: ''
   };
+
+  formError: string;
 
   public formVisible: boolean = false;
 
@@ -33,7 +35,7 @@ export class LocationDetailsComponent implements OnInit {
     if (this.formIsValid()) {
       console.log(this.newReview);
       this.loc8rDataService.addReviewByLocationId(this.location._id, this.newReview)
-      .then(review => {
+      .then((review: Review) => {
         console.log('Review saved', review);
         this.location.reviews.unshift(review);
         this.resetAndHideReviewForm();

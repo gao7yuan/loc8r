@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Headers, Http } from '@angular/http';
-import { Location } from './home-list/home-list.component';
+import { Location, Review } from './location';
 
 @Injectable({
   providedIn: 'root'
@@ -41,7 +41,7 @@ export class Loc8rDataService {
     return this.http
       .post(url, formData)
       .toPromise()
-      .then(response => response.json() as any)
+      .then(response => response.json() as Review)
       .catch(this.handleError);
 
   }
