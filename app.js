@@ -6,7 +6,7 @@ const logger = require('morgan');
 
 require('./app_api/models/db');
 
-const indexRouter = require('./app_server/routes/index');
+// const indexRouter = require('./app_server/routes/index'); comment out to disable Express routes
 const apiRoutes = require('./app_api/routes/index');
 
 const app = express();
@@ -19,7 +19,7 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'loc8r-public', 'build')));
 app.use(express.static(path.join(__dirname, 'loc8r-public')));
 
 // allow CORS
@@ -30,8 +30,11 @@ app.use('/api', function(req, res, next) {
   next();
 });
 
-app.use('/', indexRouter);
+// app.use('/', indexRouter); comment out to disable Express routes
 app.use('/api', apiRoutes); // requests that begin with /api will be routed using apiRoutes. apiRoutes handles the remaining of the routing
+app.get(/(\/about)|(\/location\/[a-z0-9]{24})/, function(req, res, next) {
+  res.sendFile(path.join(_dirname, 'app_public', 'build', 'index.html'));
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
