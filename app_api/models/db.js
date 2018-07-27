@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
-//let dbURI = 'mongodb://localhost/Loc8r';
-let dbURI = 'mongodb://163630:63630@ds163630.mlab.com:63630/heroku_qpddz35g';
+let dbURI = 'mongodb://localhost/Loc8r';
+// let dbURI = 'mongodb://163630:63630@ds163630.mlab.com:63630/heroku_qpddz35g';
 if (process.env.NODE_ENV === 'production') {
-  //dbURI = process.env.MONGODB_URI;
+  dbURI = process.env.MONGODB_URI;
 }
 mongoose.connect(dbURI);
 
