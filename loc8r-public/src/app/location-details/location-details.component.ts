@@ -13,6 +13,11 @@ export class LocationDetailsComponent implements OnInit {
 
   @Input() location: Location;
 
+  constructor(private loc8rDataService: Loc8rDataService) { }
+
+  ngOnInit() {
+  }
+
   public newReview: Review = {
     author: '',
     rating: 5,
@@ -52,10 +57,4 @@ export class LocationDetailsComponent implements OnInit {
       return false;
     }
   }
-
-  constructor(private loc8rDataService: Loc8rDataService) { }
-
-  ngOnInit() {
-  }
-
 }
