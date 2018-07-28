@@ -4,6 +4,9 @@ Yuan Gao's Getting MEAN Book Project for CS 5610 Web Development
 ## Chapter 10
 Building a Single Page Application with Angular: The next level
 
+### Heroku App Web page
+Here's the link to the [Heroku App](https://loc8r-yuangao.herokuapp.com)
+
 ### Screenshot
 ![ch10](/images/ch10-screenshot.png)
 
