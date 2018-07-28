@@ -36,7 +36,7 @@ export class Loc8rDataService {
     return Promise.reject(error.message || error);
   }
 
-  public addReviewByLocationId(locationId: string, formData: any): Promise<Review> {
+  public addReviewByLocationId(locationId: string, formData: Review): Promise<Review> {
     const url: string = `${this.apiBaseUrl}/locations/${locationId}/reviews`;
     return this.http
       .post(url, formData)
