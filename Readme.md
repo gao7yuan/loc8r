@@ -1,6 +1,50 @@
 # Yuan Gao Getting MEAN 2nd Ed Book Project (loc8r)
 Yuan Gao's Getting MEAN Book Project for CS 5610 Web Development
 
+## Chapter 10
+Building a Single Page Application with Angular: The next level
+
+### Screenshot
+![ch10](/images/ch10-screenshot.png)
+
+### Notes
+* More complex views and routing parameters
+  - Layout
+  ![ch10](/images/ch10-figure1.png)
+  - Create required components: location-details and details-page
+  - Setting up and defining routes with URL parameters
+    - in ```app.module.ts```
+    - like in Express, put a locationsId variable a the end of the path with ```:```
+    - sidebar layout: ```<p class="lead" [innerHTML]="content | htmlLineBreaks"></p>```
+    - standard ```href``` attributes in ```<a>``` tag, browser follows them as normal links - page full reload
+    - use ```routerLink```
+  - Using URL parameters in components and services - get the data and display
+    - ```getLocationById``` in ```loc8r-data.service.ts```
+    - import data service into details page component, and to providers and decalred it in constructor
+    - Using URL parameters in a componenet
+    - Passing data to details component
+  - Building details page view
+    - ```*ngIf``` directive
+    - ```[ngSwitch]``` binding to define the condition to switch on
+    - ```*ngSwitchCase``` directive to provide a specific value
+    - ```*ngSwitchDefault``` directive to provide a backup option if none of the specific values matched
+* Working with forms and handling submitted data
+  - create the "add review" form in Angular. display a form inline in the page instead of navigating to a separate form page
+  - Create the review form in Angular
+    - To add a data binding to a form field use a directive with a special syntax like this: ```[(ngModel)]="bindingName"```
+    - To use ```ngModel``` in HTML need to have ```FormsModule``` imported into application in ```app.module.ts```
+  - Sending submitted form data to API
+    - JS unshift method to add the new review into the first spot in the array
+* Improving architecture
+  - Using a separate route config file
+    - The purpose of ```app.module.ts``` file is to tell Angular compiler all about the app and the files it needs.
+    - Create a routing config file ```$ ng generate module app-routing```
+  - Improving location class definition
+* Using SPA instead of the server-side app
+  - Routing Express requests to the build folder
+  - Making sure deep URLs work    
+
+
 ## Chapter 9
 Building a single-page application with Angular
 
