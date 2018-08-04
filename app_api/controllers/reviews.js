@@ -33,6 +33,8 @@ const _doAddReview = function(req, res, location) {
         "message": "locationid not found"
       });
   } else {
+    console.log(req.body.author);
+    console.log(req.body.rating);
     location.reviews.push({
       author: req.body.author,
       rating: req.body.rating,
@@ -70,9 +72,12 @@ const _doSetAverageRating = function(location) {
   if (location.reviews && location.reviews.length > 0) {
     const reviewCount = location.reviews.length;
     const ratingTotal = location.reviews.reduce((total, review) => {
-      return total + location.reviews.rating;
+      return total + review.rating;
     }, 0);
     let ratingAverage = parseInt(ratingTotal / reviewCount, 10);
+    console.log("ratingTotal:", ratingTotal);
+    console.log("reviewCount:", reviewCount);
+    console.log("ratingAvg:", ratingAverage);
     location.rating = ratingAverage;
     location.save((err) => {
       if (err) {
