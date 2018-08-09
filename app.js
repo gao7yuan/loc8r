@@ -33,11 +33,11 @@ app.use('/api', function(req, res, next) {
 // app.use('/', indexRouter); comment out to disable Express routes
 app.use('/api', apiRoutes); // requests that begin with /api will be routed using apiRoutes. apiRoutes handles the remaining of the routing
 app.get(/(\/about)|(\/location\/[a-z0-9]{24})/, function(req, res, next) {
-  res.sendFile(path.join(__dirname, 'app_public', 'build', 'index.html'));
+  res.sendFile(path.join(__dirname, 'loc8r-public', 'build', 'index.html'));
 });
 
 app.get('*', function(req, res, next) {
-  res.sendFile(path.join(__dirname, 'app_public', 'build', 'index.html'));
+  res.sendFile(path.join(__dirname, 'loc8r-public', 'build', 'index.html'));
 });
 
 // catch 404 and forward to error handler
