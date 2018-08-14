@@ -1,6 +1,16 @@
 # Yuan Gao Getting MEAN 2nd Ed Book Project (loc8r)
 Yuan Gao's Getting MEAN Book Project for CS 5610 Web Development
 
+## Links to each chapter
+- [Chapter 10](#chapter-10)
+- [Chapter 9](#chapter-9)
+- [Chapter 8](#chapter-8)
+- [Chapter 7](#chapter-7)
+- [Chapter 6](#chapter-6)
+- [Chapter 5](#chapter-5)
+- [Chapter 4](#chapter-4)
+- [Chapter 3](#chapter-3)
+
 ## Chapter 10
 Building a Single Page Application with Angular: The next level
 
